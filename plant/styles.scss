@@ -984,18 +984,20 @@ body {
 .not-loaded * {
   animation-play-state: paused !important;
 }
+
+
 .texto-frente {
   font-family: Impact, Charcoal, sans-serif;
-  font-size: 50px;
+  font-size: 5vw; /* Alterado para unidade de viewport width */
   color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0.2vw 0.2vw 0.4vw rgba(0, 0, 0, 0.5); /* Alterado para unidades vw */
   opacity: 0; /* começa transparente */
-  transition: opacity 10s ease; /* adiciona transição */
+  transition: opacity 15s ease; /* reduzi o tempo de transição */
 }
 
 .loaded .texto-frente {
@@ -1005,10 +1007,23 @@ body {
 /* Estilos para a logo */
 .logo {
   position: absolute;
-  margin-top: 25%;
-  margin-left: -5%;
-  width: 200px;
-  height: 200px;
-  transform: translate(-50%, -50%);
+  top: 110%; /* Movido para o topo */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15vw; /* Alterado para unidade de viewport width */
+  max-width: 150px; /* Limita o tamanho máximo */
   z-index: 9999; /* Garante que a logo esteja na frente do conteúdo */
+}
+
+/* Adicionando media queries para dispositivos móveis */
+@media screen and (max-width: 768px) {
+  .texto-frente {
+    font-size: 8vw; /* Ajuste o tamanho da fonte para telas menores */
+  }
+
+  .logo {
+    top: -100%; /* Ajuste a posição da logo para telas menores */
+    width: 25vw; /* Ajuste o tamanho do logo para telas menores */
+    max-width: 100px; /* Reduz ainda mais o tamanho máximo */
+  }
 }

@@ -16,6 +16,7 @@ section {
 }
 
 .container {
+  margin-top: -20vh;
   width: 100%;
 }
 
@@ -59,12 +60,20 @@ h6 {
   }
 }
 
- /* Estilos para a logo */
- .logo {
-  position: absolute;
-  margin-top: 10%;
-  width: 200px;
-  height: 200px;
-  transform: translate(-50%, -50%);
+/* Estilos para a logo */
+.logo {
+  position: relative; /* Alterado para relativo para melhorar o posicionamento */
+   /* Adapta o margin-top para diferentes tamanhos de tela */
+  width: 200px; /* Redimensionamento da logo */
+  height: 200px; /* Redimensionamento da logo */
   z-index: 9999; /* Garante que a logo esteja na frente do conteúdo */
+}
+
+/* Adicionando media query para dispositivos móveis */
+@media screen and (max-width: 768px) {
+  .logo { /* Ajuste do margin-top para dispositivos móveis */
+    width: 200px; /* Redimensionamento da logo para dispositivos móveis */
+    height: 200px; /* Redimensionamento da logo para dispositivos móveis */
+  }
+
 }
