@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  flex-direction: column
+
+}
+
+section {
+  height: auto;
+  margin: auto;
+}
+
+.container {
+  width: 100%;
+}
+
+.table {
+  position: relative;
+  margin: 0 auto;
+  width: 300px;
+  height: 200px;
+  background-color: #ffe0cc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+#cat {
+  width: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+}
+
+#message {
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #666;
+}
+h6 {
+  color: #666;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(30vh) rotate(360deg);
+  }
+}
+
+ /* Estilos para a logo */
+ .logo {
+  position: absolute;
+  margin-top: 10%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Garante que a logo esteja na frente do conteúdo */
+}
