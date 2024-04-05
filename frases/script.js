@@ -8,7 +8,7 @@ const Words = [
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 let Word = Words[Math.floor(Math.random() * Words.length)].toUpperCase();
 let WordArray = Word.split("");
-console.log(`I hope you feel bad for cheating!\nAnyway your word is "${Word}"`);
+console.log(`Voce ta roubando se tiver por aqui!\n mas tanto faz ta aqui a palavra: "${Word}"`);
 
 let score = 0;
 let currentRow = 0;
@@ -26,7 +26,7 @@ const guessWord = async () => {
   if (guessedWord.length < maxRows) {
       for (let i = 0; i < row.children.length; i++)
           row.children[i].textContent = "";
-      sendMessage("error", "Word must be 5 letters long");
+      sendMessage("error", "A palavra deve ter 5 letras");
       return;
   } else {
       for (let i = 0; i < guessedWordArray.length; i++) {
@@ -72,13 +72,13 @@ const guessWord = async () => {
   if (guessedWord === Word) {
       score += Number((1000 / +currentRow).toFixed(0));
       document.getElementById("score").textContent = `Score: ${score}`;
-      sendMessage("success", "Congratulations! You guessed the word!");
+      sendMessage("success", "Parabéns, você é um exemplo de resiliência");
       await delay(5000);
       resetGame();
   }
 
   if (currentRow === maxRows + 1) {
-      sendMessage("error", "You lost! The word was " + Word);
+      sendMessage("error", "Você perdeu! A palavra foi " + Word + "mas não desista, amanhã é outro dia e outra chance de acertar");
       await delay(5000);
       resetGame();
   }
