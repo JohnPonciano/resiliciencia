@@ -12,8 +12,8 @@ new Vue({
         {
           name: "Resilience",
           artist: "Sabrina",
-          cover: "https://raw.githubusercontent.com/johnponciano/resiliencia/mini-player/img/1.jpg",
-          source: "/https://raw.githubusercontent.com/johnponciano/resiliencia/mini-player/mp3/1.mp3",
+          cover: "https://johnponciano.github.io/resiliencia/mini-player/img/1.jpg",
+          source: "https://johnponciano.github.io/resiliencia/mini-player/mp3/1.mp3",
           url: "",
           favorited: false
         },
