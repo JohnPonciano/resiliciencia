@@ -10,7 +10,7 @@ new Vue({
       isTimerPlaying: false,
       tracks: [
         {
-          name: "Resilience",
+          name: "Phoenix Rebirth Melody remix",
           artist: "Sabrina",
           cover: "https://johnponciano.github.io/resiliencia/mini-player/img/1.jpg",
           source: "https://johnponciano.github.io/resiliencia/mini-player/mp3/1.mp3",
