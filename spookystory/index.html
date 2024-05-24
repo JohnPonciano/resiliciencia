@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia assustadora</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+        /* Estilos CSS para o ícone de scroll */
+        .scroll-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-icon img {
+            width: 50px;
+            height: auto;
+        }
+
+        /* Animação para esconder o ícone ao rolar para baixo */
+        .hide-scroll-icon {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="intro">
+          <h1>Uma historia</h1>
+          <p>muito assustadora</p>
+        </div>
+        <div class="content">
+          <section class="section hero"></section>
+          <section class="section gradient-purple"></section>
+          <section class="section gradient-blue">
+            <div class="test">
+                <p>No fundo de um antigo castelo, onde até as teias de aranha têm rugas, reside uma história de resiliência.</p>
+                <p>Num reino onde até os fantasmas precisam de licença para assombrar, vive um grupo de criaturas tão persistentes que até os esqueletos velhos estão impressionados.</p>
+                <p>Quando o caos bate à porta, esses habitantes do castelo não fogem, eles fazem uma festa.</p>
+                <p>Entre risadas e sustos, eles ensinam ao mundo o verdadeiro significado da resiliência - enfrentar desafios com uma piada pronta e uma dose saudável de teimosia.</p>
+                
+            </div>
+          </section>
+        </div>
+        <div class="image-container">
+          <img src="https://uploads-ssl.webflow.com/5cff83ac2044e22cb8cf2f11/5d13364599bb70e3560cc4e5_background-min%203.png" alt="image">
+        </div>
+
+        <!-- Ícone para orientar o scroll -->
+        <div class="scroll-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25617.png" alt="Scroll Icon">
+        </div>
+
+        <!-- Script para esconder o ícone ao rolar para baixo -->
+        <script>
+            window.addEventListener('scroll', function() {
+                const scrollIcon = document.querySelector('.scroll-icon');
+                if (window.scrollY > 100) {
+                    scrollIcon.classList.add('hide-scroll-icon');
+                } else {
+                    scrollIcon.classList.remove('hide-scroll-icon');
+                }
+            });
+        </script>
+</body>
+</html>
