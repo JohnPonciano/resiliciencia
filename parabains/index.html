@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parabéns Miguel</title>
+    <style>
+        body{
+            color: whitesmoke;
+            background-color: black;
+        }
+        .content {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            
+        }
+
+        .text {
+            font-family: 'Comic Sans MS';
+            font-weight: bold;
+            font-size: 5em;
+            text-align: center;
+        }
+
+        #parabains {
+            
+            -webkit-text-fill-color: yellow; /* Will override color (regardless of order) */
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: black;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+
+
+<body>
+<div id="content" class="content">
+    <div id="countdown" class="text">
+        10
+    </div>
+</div>
+
+<script>
+    const parabains = `
+      <div id="parabains" class="text">
+        Muitos Parabains MiNguel
+      </div>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/1Mcdh2Vf2Xk?controls=0&showinfo=0&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    `;
+    const $content = document.getElementById('content');
+    const $countdown = document.getElementById('countdown');
+
+    const decrement = (count) => {
+      const newCount = count - 1;
+      if (newCount > 0) {
+        $countdown.textContent = newCount;
+        setTimeout(() => decrement(newCount), 1000);
+      } else {
+        $content.innerHTML = parabains;
+        document.body.style.backgroundImage = 'url(https://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/f0/f0e91c7b6fe5eb6c160f093705bac5a3e210f998_full.jpg)';
+        confetti({
+          particleCount: 1000,
+          ticks: 1000,
+          spread: 90
+        });
+      }
+    };
+
+    setTimeout(() => decrement(10), 1000);
+</script>
+</body>
+</html>
