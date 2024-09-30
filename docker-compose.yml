@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  resiliencia-blog-front:
+    build:
+      context: ./sites
+    ports:
+      - "1001:1001"
+
+  resiliencia-blog-backend:
+    build:
+      context: ./backend
+    ports:
+      - "1002:1002"

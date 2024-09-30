@@ -11,7 +11,7 @@ COPY . /sites
 WORKDIR /sites
 
 # Exponha a porta 80
-EXPOSE 80
+EXPOSE 1001
 
 # Comando para iniciar o servidor HTTP embutido do Python
-CMD ["python3", "-m", "http.server", "80"]
+CMD ["python3", "-m", "http.server", "1001"]
