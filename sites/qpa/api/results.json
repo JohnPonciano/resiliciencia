@@ -1,0 +1,150 @@
+{
+  "questions": [
+    {
+      "number": 0,
+      "a": "Passar o resto da vida ouvindo “Baby Shark” em loop",
+      "b": "Sempre ter que responder suas mensagens de trabalho com emojis de gatos"
+    },
+    {
+      "number": 1,
+      "a": "Instalar O'ring",
+      "b": "Ter um escorpião como animal de estimação"
+    },
+    {
+      "number": 2,
+      "a": "Passar um dia inteiro em uma sala cheia de pessoas que não param de falar sobre seus problemas de saúde",
+      "b": "Ter que explicar todos os dias por que você não quer ser um influencer de redes sociais"
+    },
+    {
+      "number": 3,
+      "a": "Ter que usar a mesma roupa íntima por uma semana",
+      "b": "Nunca mais conseguir fechar a porta do banheiro"
+    },
+    {
+      "number": 4,
+      "a": "Receber uma caixa de presentes com itens que você já tem, mas todos em tamanhos menores",
+      "b": "Assistir a uma série de TV onde o enredo é sobre um grupo de pessoas tentando descobrir qual é o sabor do sorvete sem poder prová-lo"
+    },
+    {
+      "number": 5,
+      "a": "Ter que passar uma semana inteira fazendo uma dança estranha sempre que alguém fala seu nome",
+      "b": "Usar uma fantasia de banana em todos os eventos sociais"
+    },
+    {
+      "number": 6,
+      "a": "Ter que usar uma máscara de palhaço todos os dias no trabalho",
+      "b": "Viver em uma casa onde todos os móveis são infláveis"
+    },
+    {
+      "number": 7,
+      "a": "Receber uma ligação diária de alguém reclamando da temperatura do seu café",
+      "b": "Ter que usar um chapéu de pirata durante todas as reuniões de família"
+    },
+    {
+      "number": 8,
+      "a": "Passar um mês inteiro sem poder falar e se comunicar apenas por sinais de mão",
+      "b": "Ter que assistir a vídeos de tutoriais de maquiagem o dia inteiro"
+    },
+    {
+      "number": 9,
+      "a": "Jantar todos os dias com um enorme grupo de pessoas que só falam sobre seus animais de estimação",
+      "b": "Ter que usar sapatos com barulhentos sinos em cada passo"
+    },
+    {
+      "number": 10,
+      "a": "Passar uma semana inteira em um lugar onde a única comida disponível é comida de astronauta",
+      "b": "Ter que fazer malabares com limões durante suas reuniões de trabalho"
+    },
+    {
+      "number": 11,
+      "a": "Sempre ter que enviar uma foto de seus pés toda vez que alguém te manda uma mensagem",
+      "b": "Viver em uma casa onde todas as paredes são espelhos"
+    },
+    {
+      "number": 12,
+      "a": "Receber um presente de aniversário inesperado, mas sempre é um par de meias feias",
+      "b": "Ter que fazer um desfile de moda todos os dias na sua sala de estar"
+    },
+    {
+      "number": 13,
+      "a": "Ficar preso em um elevador com uma playlist de músicas de elevador para sempre",
+      "b": "Ter que fazer uma dança da chuva sempre que entrar em um prédio"
+    },
+    {
+      "number": 14,
+      "a": "Ter que usar uma peruca extravagante sempre que for ao supermercado",
+      "b": "Receber mensagens em um idioma desconhecido que você tem que traduzir para entender"
+    },
+    {
+      "number": 15,
+      "a": "Passar um dia inteiro em uma sala onde todos estão tentando te ensinar origami",
+      "b": "Ter que ouvir o som de um apito toda vez que alguém usa a palavra 'entender'"
+    }
+  ],
+  "results": {
+    "0": {
+      "a": 6,
+      "b": 24
+    },
+    "1": {
+      "a": 5,
+      "b": 17
+    },
+    "2": {
+      "a": 9,
+      "b": 25
+    },
+    "3": {
+      "a": 8,
+      "b": 20
+    },
+    "4": {
+      "a": 10,
+      "b": 26
+    },
+    "5": {
+      "a": 12,
+      "b": 23
+    },
+    "6": {
+      "a": 18,
+      "b": 11
+    },
+    "7": {
+      "a": 8,
+      "b": 17
+    },
+    "8": {
+      "a": 4,
+      "b": 21
+    },
+    "9": {
+      "a": 10,
+      "b": 14
+    },
+    "10": {
+      "a": 5,
+      "b": 22
+    },
+    "11": {
+      "a": 13,
+      "b": 22
+    },
+    "12": {
+      "a": 7,
+      "b": 15
+    },
+    "13": {
+      "a": 8,
+      "b": 18
+    },
+    "14": {
+      "a": 18,
+      "b": 23
+    },
+    "15": {
+      "a": 11,
+      "b": 17
+    }
+  }
+}

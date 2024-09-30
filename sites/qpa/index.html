@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn.medens.com.br/mi/resiliencia.png" type="image/png">
+    <title>Você prefere... </title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            /* Cor de fundo para suavizar */
+        }
+
+        .container {
+            display: flex;
+            height: 100%;
+        }
+
+        .option {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            opacity: 0.9;
+        }
+
+        .option-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .percentage {
+            font-size: 48px;
+            font-weight: bold;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        #optionA {
+            background-color: white;
+            color: #ef8315;
+        }
+
+        #optionB {
+            background-color: black;
+            color: #ef8315;
+        }
+
+        .floating-icon {
+            position: absolute;
+            top: 50px; /* Ajuste a distância do topo conforme necessário */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100; /* Garantir que fique acima de outros elementos */
+        }
+        
+        .floating-text{
+            position: absolute;
+            top: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            color: #ef8315;
+            border-radius: 28px;
+            padding: 12px;
+        }
+
+
+        @keyframes fadeIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-icon">
+        <img src="https://cdn.medens.com.br/mi/resiliencia.png" alt="Resiliência" width="80">
+    </div>
+
+    <div class="floating-text">
+        <h1>Ou</h1>
+    </div>
+        
+    </div>
+    <!-- Question Container -->
+    <div class="container">
+        <div class="option" id="optionA" onclick="chooseOption('A')">
+            <h1>Você Prefere</h1>
+            <div class="option-text"></div>
+            <h5>Oque outros escolheram</h5>
+            <div class="percentage">
+            </div>
+        </div>
+        <div class="option" id="optionB" onclick="chooseOption('B')">
+            <h1>Você Prefere</h1>
+            <div class="option-text"></div>
+            <h5>Oque outros escolheram</h5>
+            <div class="percentage">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        let displayedQuestions = [];
+        let currentQuestionIndex = 0;
+        let answersCount = 0;
+        let localResults = {};
+        let gameStarted = false;
+        let quizFinished = false;
+
+        function shuffleArray(array) {
+            if (array.length < 5) {
+                throw new Error("O array deve conter pelo menos 5 itens.");
+            }
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array.slice(0, 5);
+        }
+
+        function fetchQuestions() {
+            return $.ajax({
+                url: 'http://localhost:3000/questions',
+                method: 'GET',
+                contentType: 'application/json'
+            }).then(data => {
+                if (data && Array.isArray(data.questions)) {
+                    displayedQuestions = shuffleArray([...data.questions]);
+                    localStorage.setItem('questions', JSON.stringify(displayedQuestions));
+                    displayQuestion();
+                } else {
+                    console.error('Data fetched is not in the expected format');
+                }
+            }).catch(error => {
+                console.error('Error fetching questions:', error);
+            });
+        }
+
+        function displayQuestion() {
+            const savedQuestions = JSON.parse(localStorage.getItem('questions')) || [];
+            if (answersCount >= 5) {
+                showFinalScreen();
+                sendResultsToAPI();
+                return;
+            }
+
+            const question = savedQuestions[answersCount];
+            document.querySelector('#optionA .option-text').textContent = question.a;
+            document.querySelector('#optionB .option-text').textContent = question.b;
+
+            document.querySelector('#optionA .percentage').style.opacity = '0';
+            document.querySelector('#optionB .percentage').style.opacity = '0';
+        }
+
+        function chooseOption(option) {
+            if (quizFinished) {
+                return;
+            }
+
+            const savedQuestions = JSON.parse(localStorage.getItem('questions')) || [];
+            const question = savedQuestions[currentQuestionIndex];
+            console.log("Option chosen:", option);
+
+            if (!localResults[question.number]) localResults[question.number] = { a: 0, b: 0 };
+            localResults[question.number][option.toLowerCase()]++;
+
+            updateLocalPercentages(question.number);
+
+            answersCount++;
+            currentQuestionIndex++;
+
+            setTimeout(() => {
+                if (answersCount >= 5) {
+                    quizFinished = true;  // Marcar como terminado antes de exibir a tela final
+                    sendResultsToAPI();   // Enviar resultados antes de mostrar a tela final
+                } else {
+                    displayQuestion();
+                }
+            }, 3000); // Tempo de espera aumentado
+        }
+        function updateLocalPercentages(questionNumber) {
+            $.ajax({
+                url: 'http://localhost:3000/results',
+                method: 'GET',
+                contentType: 'application/json'
+            }).then(data => {
+                console.log('Data received from /results:', data);
+
+                result_data = data[questionNumber];
+                console.log("resultado consultado", result_data);
+                if (result_data) {
+                    const results = result_data;
+
+                    const total = results.a + results.b;
+                    const percentages = {
+                        a: total ? Math.round((results.a / total) * 100) + "%" : "0%",
+                        b: total ? Math.round((results.b / total) * 100) + "%" : "0%"
+                    };
+
+                    document.querySelector('#optionA .percentage').textContent = percentages.a;
+                    document.querySelector('#optionB .percentage').textContent = percentages.b;
+                    document.querySelector('#optionA .percentage').style.opacity = '1';
+                    document.querySelector('#optionB .percentage').style.opacity = '1';
+                    console.log("porcentagem gerada", percentages);
+                } else {
+                    console.error(`Results for question ${questionNumber} not found.`);
+                }
+            }).catch(error => {
+                console.error('Error fetching results:', error);
+            });
+        }
+
+        function sendResultsToAPI() {
+            console.log("Sending results to API:", localResults);
+            $.ajax({
+                url: 'http://localhost:3000/save_answers',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(localResults),
+                success: function (response) {
+                    console.log('Results saved successfully:', response);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Failed to save results:', error);
+                }
+            });
+        }
+
+        function showFinalScreen() {
+            quizFinished = true;
+            $('#finalScreen').addClass('visible').show();
+        }
+
+        $(document).ready(function () {
+            $('#finalScreen').hide();
+        });
+
+        function startGame() {
+            $('#startMenu').removeClass('visible').hide();
+            fetchQuestions();
+            gameStarted = true;
+        }
+
+        startGame()
+    </script>
+</body>
+
+</html>
