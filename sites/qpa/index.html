@@ -148,7 +148,7 @@
 
         function fetchQuestions() {
             return $.ajax({
-                url: 'http://localhost:3000/questions',
+                url: 'https://api-resiliencia.emfils-tech.com.br/questions',
                 method: 'GET',
                 contentType: 'application/json'
             }).then(data => {
@@ -208,7 +208,7 @@
         }
         function updateLocalPercentages(questionNumber) {
             $.ajax({
-                url: 'http://localhost:3000/results',
+                url: 'https://api-resiliencia.emfils-tech.com.br/results',
                 method: 'GET',
                 contentType: 'application/json'
             }).then(data => {
@@ -241,7 +241,7 @@
         function sendResultsToAPI() {
             console.log("Sending results to API:", localResults);
             $.ajax({
-                url: 'http://localhost:3000/save_answers',
+                url: 'https://api-resiliencia.emfils-tech.com.br/save_answers',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(localResults),
